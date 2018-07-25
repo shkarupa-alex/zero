@@ -1,0 +1,5 @@
+include README.md LICENSE BUILD
+recursive-include tensorflow_zero BUILD
+graft tensorflow_zero/cc
+recursive-exclude tensorflow_zero/cc *.so
+
