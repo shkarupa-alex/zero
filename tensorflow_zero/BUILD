@@ -5,6 +5,6 @@ py_library(
     srcs = ["__init__.py"],
     srcs_version = "PY2AND3",
     deps = [
-        "//tensorflow_zero/python:zero_ops_py",
+        "//tensorflow_zero/python",
     ],
 )
