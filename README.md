@@ -1,6 +1,6 @@
 # tensorflow-zero
 
-Demo repository with infrastructure to build wheel for [Tensorflow custom OP](https://www.tensorflow.org/extend/adding_an_op)
+Demo repository with infrastructure to build wheel for [Tensorflow custom op](https://www.tensorflow.org/extend/adding_an_op)
 
 ## Develop commands
 
