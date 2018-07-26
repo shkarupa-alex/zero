@@ -1,3 +1,2 @@
 include README.md LICENSE
-recursive-exclude tensorflow_zero *.so
-
+recursive-include tensorflow_zero/cc *.so

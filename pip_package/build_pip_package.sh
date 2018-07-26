@@ -12,8 +12,8 @@ function main() {
   # Create the directory, then do dirname on a non-existent file inside it to give us an absolute paths with tilde
   # characters resolved to the destination directory. Readlink -f is a cleaner way of doing this but is not available
   # on a fresh macOS install.
-  mkdir -p "$1"
-  DEST="$(dirname "${1}/does_not_exist")"
+  DEST="$(realpath "${1}")"
+  mkdir -p "$DEST"
   echo "=== destination directory: ${DEST}"
 
   TMPDIR=$(mktemp -d -t tmp.XXXXXXXXXX)
@@ -30,8 +30,9 @@ function main() {
   #
   # To build TensorFlow Zero wheel, we only need setup.py, MANIFEST.in, python and .so files under
   # tensorflow_zero/tensorflow_zero. So we extract those to ${TMPDIR}.
-  cp -R bazel-bin/pip_package/pip_package.runfiles/tensorflow_zero/tensorflow_zero ${TMPDIR}
-  find ${TMPDIR}/tensorflow_zero/cc -name '__init__.py'  -type f -delete
+  cp -LR bazel-bin/pip_package/pip_package.runfiles/tensorflow_zero/tensorflow_zero ${TMPDIR}
+  find ${TMPDIR}/tensorflow_zero/cc/ -name '__init__.py'  -type f -delete
+  cp pip_package/__init__.py ${TMPDIR}
   cp pip_package/LICENSE ${TMPDIR}
   cp pip_package/MANIFEST.in ${TMPDIR}
   cp pip_package/README.md ${TMPDIR}

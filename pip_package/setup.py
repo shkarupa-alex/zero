@@ -7,7 +7,7 @@ from setuptools.dist import Distribution
 
 import warnings
 
-__version__ = '0.0.2'
+__version__ = '0.0.4'
 
 
 class BinaryDistribution(Distribution):
@@ -31,7 +31,7 @@ setup(
     license='MIT',
     packages=find_packages(),
     install_requires=[
-        'tensorflow>=1.5.0',
+        'tensorflow>=1.8.0',
     ],
     include_package_data=True,
     package_data={'': ['*.so']},
